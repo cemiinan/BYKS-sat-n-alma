@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background: #f4f7fb;
+  color: #182333;
+  overscroll-behavior-y: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+@layer components {
+  .field {
+    @apply w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-base text-slate-800 outline-none transition focus:border-navy-700 focus:ring-2 focus:ring-navy-100 md:text-sm;
+  }
+
+  .label {
+    @apply mb-1 block text-xs font-semibold uppercase tracking-normal text-slate-500;
+  }
+
+  .panel {
+    @apply rounded-lg border border-slate-200 bg-white shadow-soft;
+  }
+
+  .btn {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-md px-3 py-2 text-sm font-semibold transition disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .btn-primary {
+    @apply btn bg-navy-800 text-white hover:bg-navy-900;
+  }
+
+  .btn-secondary {
+    @apply btn border border-slate-200 bg-white text-slate-700 hover:bg-slate-50;
+  }
+
+  .btn-danger {
+    @apply btn bg-rose-600 text-white hover:bg-rose-700;
+  }
+}
+
+@supports (padding: max(0px)) {
+  body {
+    padding-top: env(safe-area-inset-top);
+  }
+}
+
+@media (max-width: 767px) {
+  table {
+    font-size: 13px;
+  }
+
+  input,
+  select,
+  textarea {
+    min-height: 44px;
+  }
+}
