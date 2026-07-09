@@ -496,7 +496,7 @@ export default function App() {
     <div className="min-h-screen bg-slate-100">
       <aside className="fixed inset-x-0 bottom-0 z-30 border-t border-slate-200 bg-white p-2 md:inset-y-0 md:left-0 md:right-auto md:w-72 md:border-r md:border-t-0 md:p-5">
         <div className="mb-6 hidden md:block">
-          <Image src="/byks-logo.jpg" alt="BYKS" width={290} height={122} className="h-14 w-auto rounded-md bg-white object-contain" priority />
+          <Image src="/byks-logo.svg" alt="BYKS" width={290} height={122} className="h-14 w-auto rounded-md bg-white object-contain" priority />
           <div className="mt-1 text-sm text-slate-500">Satın Alma Onay Sistemi</div>
         </div>
         <nav className="grid grid-cols-4 gap-1 md:grid-cols-1 md:gap-2">
@@ -525,7 +525,7 @@ export default function App() {
         <header className="sticky top-0 z-20 border-b border-slate-200 bg-white/95 px-4 py-3 backdrop-blur md:px-8">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
-              <div className="flex items-center gap-2 md:hidden"><Image src="/byks-logo.jpg" alt="BYKS" width={290} height={122} className="h-8 w-auto rounded bg-white object-contain" /><span className="text-lg font-bold text-navy-900">Satın Alma</span></div>
+              <div className="flex items-center gap-2 md:hidden"><Image src="/byks-logo.svg" alt="BYKS" width={290} height={122} className="h-8 w-auto rounded bg-white object-contain" /><span className="text-lg font-bold text-navy-900">Satın Alma</span></div>
               <div className="text-sm text-slate-500">{currentUser.name} · {currentUser.role}</div>
             </div>
             <div className="relative flex items-center gap-2">
@@ -584,7 +584,7 @@ function Login({ onLogin }: { onLogin: (user: User) => void }) {
     <main className="grid min-h-screen place-items-center bg-slate-100 p-4">
       <section className="panel w-full max-w-md p-6">
         <div className="mb-6 flex items-center gap-3">
-          <Image src="/byks-logo.jpg" alt="BYKS" width={290} height={122} className="h-12 w-auto rounded-md bg-white object-contain" priority />
+          <Image src="/byks-logo.svg" alt="BYKS" width={290} height={122} className="h-12 w-auto rounded-md bg-white object-contain" priority />
           <div>
             <h1 className="text-2xl font-bold text-navy-900">BYKS Satın Alma</h1>
             <p className="text-sm text-slate-500">Kullanıcı adı ve şifre ile giriş yapın</p>

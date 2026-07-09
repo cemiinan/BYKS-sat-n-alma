@@ -2,11 +2,7 @@ const CACHE_NAME = "byks-satinalma-v1";
 const APP_SHELL = [
   "/",
   "/manifest.webmanifest",
-  "/byks-logo.jpg",
   "/byks-logo.svg",
-  "/icon-192.png",
-  "/icon-512.png",
-  "/apple-touch-icon.png"
 ];
 
 self.addEventListener("install", (event) => {

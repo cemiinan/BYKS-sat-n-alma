@@ -94,7 +94,7 @@ async function buildPageImage(order: PurchaseOrder) {
   ctx.font = "700 18px Arial, Helvetica, sans-serif";
   ctx.fillText("SATIN ALMA SİPARİŞ FORMU", 48, 30);
 
-  const logo = await loadImage("/byks-logo.jpg");
+  const logo = await loadImage("/byks-logo.svg");
   if (logo) ctx.drawImage(logo, 48, 64, 150, 63);
   else {
     ctx.fillStyle = "#0a2544";
