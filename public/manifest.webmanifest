@@ -1,0 +1,20 @@
+{
+  "name": "BYKS Satın Alma",
+  "short_name": "BYKS",
+  "description": "BYKS satın alma talep, onay ve sipariş takip uygulaması",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f4f7fb",
+  "theme_color": "#0a2544",
+  "lang": "tr",
+  "icons": [
+    {
+      "src": "/byks-logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
