@@ -1,4 +1,4 @@
-const CACHE_NAME = "byks-satin-alma-v1";
+const CACHE_NAME = "byks-satin-alma-v2";
 const APP_SHELL = ["/", "/manifest.webmanifest", "/byks-logo.svg"];
 
 self.addEventListener("install", (event) => {
@@ -15,5 +15,10 @@ self.addEventListener("activate", (event) => {
 
 self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
+  const url = new URL(event.request.url);
+  if (url.pathname.startsWith("/api/") || url.pathname.startsWith("/_next/")) {
+    event.respondWith(fetch(event.request));
+    return;
+  }
   event.respondWith(fetch(event.request).catch(() => caches.match(event.request).then((cached) => cached || caches.match("/"))));
 });
