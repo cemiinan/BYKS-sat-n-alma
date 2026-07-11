@@ -37,6 +37,10 @@ const globalStore = globalThis as typeof globalThis & { byksDemoStore?: Store };
 const store = globalStore.byksDemoStore ?? { requests: initialRequests };
 globalStore.byksDemoStore = store;
 
+function cleanRequests() {
+  store.requests = store.requests.filter((item) => item.product !== "Canli test" && item.destination !== "Canli Test Silinebilir");
+}
+
 function nextPo(items: RequestItem[]) {
   return `PO-2026-${String(items.filter((item) => item.po).length + 1).padStart(4, "0")}`;
 }
@@ -64,16 +68,19 @@ function autoSend(item: RequestItem, items: RequestItem[]): RequestItem {
 }
 
 export async function GET() {
+  cleanRequests();
   return NextResponse.json({ requests: store.requests });
 }
 
 export async function POST(request: Request) {
+  cleanRequests();
   const body = await request.json().catch(() => null) as { type?: string; id?: string; status?: Status; item?: RequestItem } | null;
   if (!body?.type) return NextResponse.json({ error: "Geçersiz işlem" }, { status: 400 });
 
   if (body.type === "create" && body.item) {
     const created = { ...body.item, id: nextRequestId(store.requests), status: "Hasan onayı bekliyor" as Status };
     store.requests = [created, ...store.requests];
+    cleanRequests();
     return NextResponse.json({ requests: store.requests, createdId: created.id });
   }
 
