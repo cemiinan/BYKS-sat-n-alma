@@ -12,7 +12,7 @@ type RequestItem = { id: string; location: string; destination: string; product:
 type NewRequestForm = { location: string; destination: string; product: string; quantity: string; unit: string; unitPrice: string; currency: "TL" | "USD" | "EUR"; exchangeRate: string; supplier: string; supplierEmail: string; due: string; deliveryDate: string; note: string; newSupplier: boolean; prepayment: boolean; urgent: boolean; };
 
 const supplierOptions = ["MBT Teknik Yapı Kimyasalları Sanayi ve Tic. A.Ş", "Ege Kimya", "Yeni Tedarik A.Ş.", "Bodrum Ambalaj"];
-const locationOptions = ["Bodrum Ofis", "Bodrum Depo", "İzmir Depo"];
+const locationOptions = ["Bodrum Ofis", "İzmir Ofis", "Bodrum Depo", "İzmir Depo"];
 const users: Record<Role, { username: string; password: string; title: string }> = {
   Cem: { username: "cem", password: "byks2026", title: "Admin / Nihai Onay" },
   Hasan: { username: "hasan", password: "hasan2026", title: "Satın Alma Ön Onay" },
