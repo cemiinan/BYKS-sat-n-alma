@@ -22,6 +22,7 @@ type RequestItem = {
   note?: string;
   mailFrom?: string;
   mailSentAt?: string;
+  freightOwner?: "buyer" | "seller";
 };
 
 const DEPO_MAIL = "info@byks.com.tr";
@@ -38,6 +39,13 @@ globalStore.byksDemoStore = store;
 
 function nextPo(items: RequestItem[]) {
   return `PO-2026-${String(items.filter((item) => item.po).length + 1).padStart(4, "0")}`;
+}
+
+function nextRequestId(items: RequestItem[]) {
+  const numbers = items
+    .map((item) => Number(item.id.match(/ST-2026-(\d+)/)?.[1] || 0))
+    .filter((value) => Number.isFinite(value));
+  return `ST-2026-${String(Math.max(0, ...numbers) + 1).padStart(4, "0")}`;
 }
 
 function mailTime() {
@@ -64,8 +72,9 @@ export async function POST(request: Request) {
   if (!body?.type) return NextResponse.json({ error: "Geçersiz işlem" }, { status: 400 });
 
   if (body.type === "create" && body.item) {
-    store.requests = [body.item, ...store.requests.filter((item) => item.id !== body.item?.id)];
-    return NextResponse.json({ requests: store.requests });
+    const created = { ...body.item, id: nextRequestId(store.requests), status: "Hasan onayı bekliyor" as Status };
+    store.requests = [created, ...store.requests];
+    return NextResponse.json({ requests: store.requests, createdId: created.id });
   }
 
   if (body.type === "status" && body.id && body.status) {
